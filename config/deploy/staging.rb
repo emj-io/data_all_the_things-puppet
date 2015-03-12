@@ -1,10 +1,19 @@
+set :stage, :staging
+
+
 # Simple Role Syntax
 # ==================
 # Supports bulk-adding hosts to roles, the primary server in each group
 # is considered to be the first unless any hosts have the primary
 # property set.  Don't declare `role :all`, it's a meta role.
 
-role :collectd %{ubuntu@emj.mycasetesting.com}
+role :puppet, %{emj.mycasetesting.com}
+role :collectd, %{emj.mycasetesting.com}
+role :riemann, %{emj.mycasetesting.com}
+role :riemanndash, %{emj.mycasetesting.com}
+role :influxdb, %{emj.mycasetesting.com}
+role :grafana, %{emj.mycasetesting.com}
+role :api, %{emj.mycasetesting.com}
 
 # Extended Server Syntax
 # ======================
