@@ -25,7 +25,7 @@ node default {
   }
 
   file { '/etc/collectd':
-    source => "puppet://collectd",
+    source => "puppet:///modules/collectd/",
     recurse => true,
   }
   
