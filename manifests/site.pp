@@ -39,4 +39,10 @@ node default {
     ensure => running,
     enable => true
   }
+
+  file { '/etc/riemann':
+    source => "puppet:///modules/dataallthethings/riemann/",
+    recurse => true,
+    notify => Service['riemann']
+  }
 }
