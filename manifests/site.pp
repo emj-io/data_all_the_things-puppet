@@ -11,7 +11,26 @@ node default {
   package { 'clojure1.4':
     ensure => installed
   }
+ 
   package { 'puppet-el':
     ensure => installed
   }	    		    
+  package { ['collectd', 'collectd-utils' ]:
+    ensure => installed
+  }
+
+  service { 'collectd':
+    ensure => running,
+    enable => true
+  }
+
+  file { '/etc/collectd':
+    source => "puppet://collectd",
+    recurse => true,
+  }
+  
+  service { 'riemann':
+    ensure => running,
+    enable => true
+  }
 }
