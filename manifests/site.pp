@@ -41,8 +41,13 @@ node default {
   }
 
   file { '/etc/riemann':
-    source => "puppet:///modules/dataallthethings/riemann/",
+    source => "puppet:///modules/dataallthethings/riemann/etc/riemann",
     recurse => true,
+    notify => Service['riemann']
+  }
+
+  file { '/etc/default/riemann':
+    source => "puppet:///modules/dataallthethings/riemann/etc/default/riemann",
     notify => Service['riemann']
   }
 }
