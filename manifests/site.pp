@@ -25,8 +25,9 @@ node default {
   }
 
   file { '/etc/collectd':
-    source => "puppet:///modules/collectd/",
+    source => "puppet:///modules/dataallthethings/collectd/",
     recurse => true,
+    notify => Service['collectd']
   }
   
   service { 'riemann':
