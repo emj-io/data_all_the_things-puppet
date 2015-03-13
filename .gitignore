@@ -2,3 +2,8 @@
 \#*\#
 .capistrano
 
+files/riemann-dash/.sass-cache
+files/riemann-dash/.sass-cache/*
+
+Gem.lock
+
