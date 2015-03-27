@@ -9,7 +9,7 @@ set :repo_url, 'git@github.com:emj-io/data_all_the_things-puppet.git'
 
 # Default deploy_to directory is /var/www/my_app_name
 # set :deploy_to, '/var/www/my_app_name'
-set :deploy_to, '/etc/puppet2'
+set :deploy_to, '/etc/puppet-deploy'
 
 # Default value for :scm is :git
 # set :scm, :git
@@ -35,15 +35,10 @@ set :deploy_to, '/etc/puppet2'
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 
-namespace :deploy do
-
-  after :restart, :clear_cache do
-    on roles(:web), in: :groups, limit: 3, wait: 10 do
-      # Here we can do anything such as:
-      # within release_path do
-      #   execute :rake, 'cache:clear'
-      # end
+namespace :deploy do  
+  after :finished do
+    on roles(:puppet) do
+        #{sudo} "ln -s /etc/puppet-deploy/current /etc/puppet;"
     end
   end
-
 end
